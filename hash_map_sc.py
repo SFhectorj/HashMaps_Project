@@ -139,7 +139,11 @@ class HashMap:
                 # Redistribute elements based on the new capacity
                 new_buckets[hash_index_update].insert(pair.key, pair.value)
 
-        # Lastly, update
+        # Updates
+        # Replace the old buckets array with the new one (new_buckets).
+        self._buckets = new_buckets
+        # Update the capacity of the hash table to the new capacity.
+        self._capacity = new_capacity
 
     def table_load(self) -> float:
         """
