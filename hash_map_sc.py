@@ -90,9 +90,13 @@ class HashMap:
 
     def put(self, key: str, value: object) -> None:
         """
-        TODO: Write this implementation
+        Parameters: Takes a string as 'key' and an object as a value.
+        This method ass a key/value pair to the hash map.
+        When the key is already present, it updates its value, otherwise it adds a new key/value pair.
         """
-        pass
+        # Set variables
+        hash_index = self._hash_function(key) % self._capacity      # hash function
+        linked_list_bucket = self._buckets[hash_index]
 
     def resize_table(self, new_capacity: int) -> None:
         """
