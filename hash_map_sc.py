@@ -100,10 +100,16 @@ class HashMap:
         key_exists = linked_list_bucket.contains(key)   # check if the key already exists in the bucket using contain()
 
         # Check size and adjust if needed
-        if self.table_load() >= 1.5:
+        #if self.table_load() >= 0.5:
             # Implement after resize table
 
-
+        # Key exists update value
+        if key_exists:
+            key_exists.value = value
+        # Doesn't exist, insert new key/value pair
+        else:
+            linked_list_bucket.insert(key, value)
+            self._size += 1
 
     def resize_table(self, new_capacity: int) -> None:
         """
