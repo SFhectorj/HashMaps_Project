@@ -94,14 +94,14 @@ class HashMap:
         This method ass a key/value pair to the hash map.
         When the key is already present, it updates its value, otherwise it adds a new key/value pair.
         """
+        # Check size and adjust if needed
+        if self.table_load() >= 0.5:
+            self.resize_table(self._capacity * 2)
+
         # Set variables
         hash_index = self._hash_function(key) % self._capacity      # hash function
         linked_list_bucket = self._buckets[hash_index]  # sets the linked list at hash index
         key_exists = linked_list_bucket.contains(key)   # check if the key already exists in the bucket using contain()
-
-        # Check size and adjust if needed
-        #if self.table_load() >= 0.5:
-            # Implement after resize table
 
         # Key exists, update value
         if key_exists:
@@ -147,9 +147,10 @@ class HashMap:
 
     def table_load(self) -> float:
         """
-        TODO: Write this implementation
+        This method shows how full the hashtable is by returning the load factor.
+        The calculation involves dividing the number of elements with the number of buckets.
         """
-        pass
+        return self._size / self._capacity
 
     def empty_buckets(self) -> int:
         """
