@@ -156,7 +156,12 @@ class HashMap:
         """
         TODO: Write this implementation
         """
-        pass
+        keeping_count = 0
+        for i in range(self._buckets.length()):
+            if self._buckets[i].length() == 0:
+                keeping_count += 1
+
+        return keeping_count
 
     def get(self, key: str):
         """
