@@ -103,7 +103,7 @@ class HashMap:
         #if self.table_load() >= 0.5:
             # Implement after resize table
 
-        # Key exists update value
+        # Key exists, update value
         if key_exists:
             key_exists.value = value
         # Doesn't exist, insert new key/value pair
@@ -113,9 +113,33 @@ class HashMap:
 
     def resize_table(self, new_capacity: int) -> None:
         """
-        TODO: Write this implementation
+        Parameters: Takes an integer as the new capacity of the table.
+        This method is responsible for resizing the hashtable to the provided size.
         """
-        pass
+        # First check that new_capacity is not less than the current number of elements in the hash map
+        if new_capacity < self._size:
+            return
+
+        # Have a variable that ensures the new capacity is prime
+        # The _next_prime method finds the next prime number greater than or equal to new_capacity.
+        new_capacity = self._next_prime(new_capacity)
+
+        # Now the new capacity can be used to create a new dynamic array
+        new_buckets = DynamicArray()
+        # Use a loop to fill each index of the new array with an empty linked list (tombstones)
+        for i in range(new_capacity):
+            new_buckets.append(LinkedList())
+
+        # all non-tombstone hash table links must be rehashed
+        for j in range(self._buckets.length()):
+            current_bucket = self._buckets[j]
+            for pair in current_bucket:
+                # Insert the key-value pair into the corresponding bucket in the new array.
+                hash_index_update = self._hash_function(pair.key) % new_capacity
+                # Redistribute elements based on the new capacity
+                new_buckets[hash_index_update].insert(pair.key, pair.value)
+
+        # Lastly, update
 
     def table_load(self) -> float:
         """
