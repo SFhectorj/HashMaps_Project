@@ -95,17 +95,20 @@ class HashMap:
         When the key is already present, it updates its value, otherwise it adds a new key/value pair.
         """
         # Check size and adjust if needed
-        if self.table_load() >= 0.5:
+        if self.table_load() >= 1.0:
             self.resize_table(self._capacity * 2)
 
         # Set variables
         hash_index = self._hash_function(key) % self._capacity      # hash function
         linked_list_bucket = self._buckets[hash_index]  # sets the linked list at hash index
-        key_exists = linked_list_bucket.contains(key)   # check if the key already exists in the bucket using contain()
+        key_exists = self.get(key)   # check if the key already exists in the bucket using get()
 
         # Key exists, update value
-        if key_exists:
-            key_exists.value = value
+        if key_exists is not None:
+            for index in linked_list_bucket:
+                if index.key == key:
+                    index.value = value
+                    break
         # Doesn't exist, insert new key/value pair
         else:
             linked_list_bucket.insert(key, value)
@@ -168,9 +171,20 @@ class HashMap:
 
     def get(self, key: str):
         """
-        TODO: Write this implementation
+        Parameter: Takes a string as a 'key'
+        This method will provide the associated value that comes with a key.
         """
-        pass
+        # Set variables
+        hash_index = self._hash_function(key) % self._capacity  # hash function
+        linked_list_bucket = self._buckets[hash_index]  # sets the linked list at hash index
+        key_exists = linked_list_bucket.contains(key)  # check if the key already exists in the bucket using contain()
+
+        # Key exists, update value
+        if key_exists:
+            return key_exists.value
+        else:
+            # Key doesn't exist, return none
+            return None
 
     def contains_key(self, key: str) -> bool:
         """
