@@ -192,7 +192,14 @@ class HashMap:
         Parameters: Takes a string as a key.
         This method checks if a given key exists in the hashmap.
         """
-        pass
+        # Set variables
+        hash_index = self._hash_function(key) % self._capacity  # hash function
+        linked_list_bucket = self._buckets[hash_index]  # sets the linked list at hash index
+        key_exists = linked_list_bucket.contains(key)  # check if the key already exists in the bucket using contain()
+
+        # Return True if a key exists in the hashmap
+        if key_exists is not None:
+            return True
 
     def remove(self, key: str) -> None:
         """
