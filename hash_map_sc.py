@@ -205,7 +205,8 @@ class HashMap:
 
     def remove(self, key: str) -> None:
         """
-        TODO: Write this implementation
+        Parameter: Takes a string as the key.
+        This method removes a key and it's value by calling the remove function from the linked list.
         """
         # Set variables
         hash_index = self._hash_function(key) % self._capacity  # hash function
@@ -213,8 +214,8 @@ class HashMap:
         key_exists = linked_list_bucket.contains(key)  # check if the key already exists in the bucket using contain()
 
         if key_exists:
-            linked_list_bucket.remove(key)
-            self._size -= 1
+            linked_list_bucket.remove(key)      # call remove() from linked list
+            self._size -= 1     # update size
 
     def get_keys_and_values(self) -> DynamicArray:
         """
