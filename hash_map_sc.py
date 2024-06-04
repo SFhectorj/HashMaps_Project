@@ -189,7 +189,8 @@ class HashMap:
 
     def contains_key(self, key: str) -> bool:
         """
-        TODO: Write this implementation
+        Parameters: Takes a string as a key.
+        This method checks if a given key exists in the hashmap.
         """
         pass
 
