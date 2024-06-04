@@ -207,7 +207,14 @@ class HashMap:
         """
         TODO: Write this implementation
         """
-        pass
+        # Set variables
+        hash_index = self._hash_function(key) % self._capacity  # hash function
+        linked_list_bucket = self._buckets[hash_index]  # sets the linked list at hash index
+        key_exists = linked_list_bucket.contains(key)  # check if the key already exists in the bucket using contain()
+
+        if key_exists:
+            linked_list_bucket.remove(key)
+            self._size -= 1
 
     def get_keys_and_values(self) -> DynamicArray:
         """
