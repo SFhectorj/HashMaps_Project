@@ -154,11 +154,14 @@ class HashMap:
 
     def empty_buckets(self) -> int:
         """
-        TODO: Write this implementation
+        This method is used to obtain the number of empty buckets in the hash table.
         """
         keeping_count = 0
+        # Iterate over all buckets
         for i in range(self._buckets.length()):
+            # if equal to zero then it's empty
             if self._buckets[i].length() == 0:
+                # count it
                 keeping_count += 1
 
         return keeping_count
