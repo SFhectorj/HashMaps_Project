@@ -119,13 +119,14 @@ class HashMap:
         Parameters: Takes an integer as the new capacity of the table.
         This method is responsible for resizing the hashtable to the provided size.
         """
-        # First check that new_capacity is not less than the current number of elements in the hash map
-        if new_capacity < self._size:
+        # First check that new_capacity is not less than 1
+        if new_capacity < 1:
             return
 
-        # Have a variable that ensures the new capacity is prime
+        # Have a variable that ensure the new capacity is prime
         # The _next_prime method finds the next prime number greater than or equal to new_capacity.
-        new_capacity = self._next_prime(new_capacity)
+        if not self._is_prime(new_capacity):
+            new_capacity = self._next_prime(new_capacity)
 
         # Now the new capacity can be used to create a new dynamic array
         new_buckets = DynamicArray()
