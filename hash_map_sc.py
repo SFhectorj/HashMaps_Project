@@ -200,6 +200,8 @@ class HashMap:
         # Return True if a key exists in the hashmap
         if key_exists is not None:
             return True
+        else:
+            return False
 
     def remove(self, key: str) -> None:
         """
