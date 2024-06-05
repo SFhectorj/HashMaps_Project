@@ -120,7 +120,7 @@ class HashMap:
         This method is responsible for resizing the hashtable to the provided size.
         """
         # First check that new_capacity is not less than 1
-        if new_capacity >= 1:
+        if new_capacity >= 1.0:
             # Have a variable that ensure the new capacity is prime
             # The _next_prime method finds the next prime number greater than or equal to new_capacity.
             if not self._is_prime(new_capacity):
