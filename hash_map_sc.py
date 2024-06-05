@@ -153,7 +153,6 @@ class HashMap:
         self._buckets = new_buckets
         # Update the capacity of the hash table to the new capacity.
         self._capacity = new_capacity
-
         # restore the size
         self._size = old_size
 
