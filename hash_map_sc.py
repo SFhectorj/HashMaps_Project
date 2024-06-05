@@ -275,12 +275,17 @@ def find_mode(da: DynamicArray) -> tuple[DynamicArray, int]:
             map.put(key, key_frequency)
 
         # Make sure to keep track of the highest values
+        # Case 1: The frequency of keys is greater than the max frequency
         if key_frequency > max_frequency:
             max_frequency = key_frequency
             mode_values = DynamicArray()    # clear out
             mode_values.append(key)
 
+        # The frequency of keys is equal to the max frequency
         elif key_frequency == max_frequency:
+            mode_values.append(key)
+
+        return mode_values, max_frequency
 
 
 
