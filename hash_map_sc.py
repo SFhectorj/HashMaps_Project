@@ -3,8 +3,8 @@
 # Course: CS261 - Data Structures
 # Assignment: 6
 # Due Date: 6/6/2024
-# Description: This assignment
-
+# Description: This assignment requires the implementation of a hashmap
+# by completing the hashmap class through implementation of various classes.
 
 from a6_include import (DynamicArray, LinkedList,
                         hash_function_1, hash_function_2)
