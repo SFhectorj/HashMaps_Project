@@ -226,9 +226,9 @@ class HashMap:
         for linked_list_index in range(self._buckets.length()):
             current_bucket = self._buckets[linked_list_index]
 
-        # Now loop through the nodes of each linked list
-        for node in current_bucket:
-            new_da.append((node.key, node.value))
+            # Now loop through the nodes of each linked list
+            for node in current_bucket:
+                new_da.append((node.key, node.value))
 
         return new_da
 
