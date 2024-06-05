@@ -236,7 +236,7 @@ class HashMap:
 
     def clear(self) -> None:
         """
-        This method simply clears the hashmaps by removig its contents.
+        This method simply clears the hashmaps by removing its contents.
         """
         # iterate the buckets
         for linked_list_index in range(self._buckets.length()):
@@ -249,11 +249,34 @@ class HashMap:
 
 def find_mode(da: DynamicArray) -> tuple[DynamicArray, int]:
     """
-    TODO: Write this implementation
+    Parameters: Takes a dynamic array as "da".
+    THis method calculates the mode of a dynamic array
+    Returns: a tuple containing a dynamic array with an integer being the mode.
     """
     # if you'd like to use a hash map,
     # use this instance of your Separate Chaining HashMap
     map = HashMap()
+
+    # variables
+    max_frequency = 0
+    mode_values = DynamicArray()
+
+    # iterate fo each element
+    for element_index in range(da.length()):
+        current_key = da[element_index]
+        # Case 1: The key does not exist
+        key_frequency = map.get(key)
+        if key_frequency is None:
+            map.put(key, 1)
+            key_frequency = 1
+        # Case 2: The key already exists
+        else:
+            key_frequency += 1
+            map.put(key, key_frequency)
+
+
+
+
 
 
 # ------------------- BASIC TESTING ---------------------------------------- #
