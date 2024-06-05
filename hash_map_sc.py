@@ -263,7 +263,7 @@ def find_mode(da: DynamicArray) -> tuple[DynamicArray, int]:
 
     # iterate fo each element
     for element_index in range(da.length()):
-        current_key = da[element_index][0]
+        current_key = da[element_index]
         # Case 1: The key does not exist
         key_frequency = map.get(current_key)
         if key_frequency is None:
