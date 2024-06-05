@@ -3,7 +3,7 @@
 # Course: CS261 - Data Structures
 # Assignment: 6
 # Due Date: 6/6/2024
-# Description:
+# Description: This assignment
 
 
 from a6_include import (DynamicArray, LinkedList,
