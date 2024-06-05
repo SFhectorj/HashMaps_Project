@@ -149,12 +149,6 @@ class HashMap:
         # Update the capacity of the hash table to the new capacity.
         self._capacity = new_capacity
 
-        self._size = 0  # Reset size to 0 and re-add each item
-        for n in range(self._buckets.length()):
-            current_bucket = self._buckets[n]
-            for pair in current_bucket:
-                self._size += 1
-
     def table_load(self) -> float:
         """
         This method shows how full the hashtable is by returning the load factor.
