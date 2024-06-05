@@ -219,9 +219,21 @@ class HashMap:
 
     def get_keys_and_values(self) -> DynamicArray:
         """
-        TODO: Write this implementation
+        Returns a dynamic array with each index filled with a tuple of key/value pairs.
         """
-        pass
+        # begin with creating a new dynamic array
+        new_da = DynamicArray()
+
+        # Iterate through each linked list (bucket) in the hash map
+        for linked_list_index in range(self._buckets.length()):
+            current_bucket = self._buckets[linked_list_index]
+
+        # Now loop through the nodes of each linked list
+        for node in current_bucket:
+            new_da.append((node.key, node.value))
+
+        return new_da
+
 
     def clear(self) -> None:
         """
