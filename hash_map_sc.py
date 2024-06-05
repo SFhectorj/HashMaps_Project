@@ -234,12 +234,17 @@ class HashMap:
 
         return new_da
 
-
     def clear(self) -> None:
         """
-        TODO: Write this implementation
+        This method simply clears the hashmaps by removig its contents.
         """
-        pass
+        # iterate the buckets
+        for linked_list_index in range(self._buckets.length()):
+            # reset with an empty linked list
+            self._buckets[linked_list_index] = LinkedList()
+
+        # reset size with 0
+        self._size = 0
 
 
 def find_mode(da: DynamicArray) -> tuple[DynamicArray, int]:
