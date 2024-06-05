@@ -134,10 +134,6 @@ class HashMap:
         for i in range(new_capacity):
             new_buckets.append(LinkedList())
 
-        # Rehash all items into the new buckets
-        old_size = self._size  # Keep track of the current number of elements
-        self._size = 0  # Reset size to 0 and re-add each item
-
         # all non-tombstone hash table links must be rehashed
         for j in range(self._buckets.length()):
             current_bucket = self._buckets[j]
@@ -146,15 +142,18 @@ class HashMap:
                 hash_index_update = self._hash_function(pair.key) % new_capacity
                 # Redistribute elements based on the new capacity
                 new_buckets[hash_index_update].insert(pair.key, pair.value)
-                self._size += 1  # Increment size for each re-added item
 
         # Updates
         # Replace the old buckets array with the new one (new_buckets).
         self._buckets = new_buckets
         # Update the capacity of the hash table to the new capacity.
         self._capacity = new_capacity
-        # restore the size
-        self._size = old_size
+
+        self._size = 0  # Reset size to 0 and re-add each item
+        for n in range(self._buckets.length()):
+            current_bucket = self._buckets[n]
+            for pair in current_bucket:
+                self._size += 1
 
     def table_load(self) -> float:
         """
