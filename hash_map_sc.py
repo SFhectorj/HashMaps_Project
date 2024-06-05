@@ -265,14 +265,14 @@ def find_mode(da: DynamicArray) -> tuple[DynamicArray, int]:
     for element_index in range(da.length()):
         current_key = da[element_index]
         # Case 1: The key does not exist
-        key_frequency = map.get(key)
+        key_frequency = map.get(current_key)
         if key_frequency is None:
-            map.put(key, 1)
+            map.put(current_key, 1)
             key_frequency = 1
         # Case 2: The key already exists
         else:
             key_frequency += 1
-            map.put(key, key_frequency)
+            map.put(current_key, key_frequency)
 
         # Make sure to keep track of the highest values
         # Case 1: The frequency of keys is greater than the max frequency
@@ -285,11 +285,7 @@ def find_mode(da: DynamicArray) -> tuple[DynamicArray, int]:
         elif key_frequency == max_frequency:
             mode_values.append(key)
 
-        return mode_values, max_frequency
-
-
-
-
+    return mode_values, max_frequency
 
 
 # ------------------- BASIC TESTING ---------------------------------------- #
