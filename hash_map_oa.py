@@ -1,8 +1,8 @@
-# Name:
-# OSU Email:
+# Name: Hector Baeza
+# OSU Email: baezah@oregonstate.edu
 # Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
+# Assignment: 6
+# Due Date: 6/6/2024
 # Description:
 
 from a6_include import (DynamicArray, DynamicArrayException, HashEntry,
