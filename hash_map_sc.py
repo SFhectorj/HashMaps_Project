@@ -126,8 +126,6 @@ class HashMap:
         # The _next_prime method finds the next prime number greater than or equal to new_capacity.
         if not self._is_prime(new_capacity):
             new_capacity = self._next_prime(new_capacity)
-        else:
-            return
 
         # Now the new capacity can be used to create a new dynamic array
         new_buckets = DynamicArray()
