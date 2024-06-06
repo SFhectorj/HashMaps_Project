@@ -118,7 +118,10 @@ class HashMap:
         Parameter: Takes an integer as a new capacity
         This method checks that the
         """
-        pass
+        if new_capacity < self._size:
+            return
+
+        new_capacity = self._next_prime(new_capacity)
 
     def table_load(self) -> float:
         """
