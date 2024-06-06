@@ -87,7 +87,9 @@ class HashMap:
 
     def put(self, key: str, value: object) -> None:
         """
-        TODO: Write this implementation
+        Parameter: Takes a string as a key and an object as a value.
+        Adds a new key if the provided key is not present in the hashmap.
+        If the key is already present then it updates its value.
         """
         # if the current load factor of the table is greater than or equal
         # to 0.5, the table must be resized to double its current capacity.
@@ -113,7 +115,8 @@ class HashMap:
 
     def resize_table(self, new_capacity: int) -> None:
         """
-        TODO: Write this implementation
+        Parameter: Takes an integer as a new capacity
+        This method checks that the
         """
         pass
 
