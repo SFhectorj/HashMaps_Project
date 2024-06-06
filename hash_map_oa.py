@@ -89,7 +89,10 @@ class HashMap:
         """
         TODO: Write this implementation
         """
-        pass
+        # if the current load factor of the table is greater than or equal
+        # to 0.5, the table must be resized to double its current capacity.
+        if self.table_load() >= 0.5:    # need to implement table load
+            self.resize_table(self._capacity * 2)
 
     def resize_table(self, new_capacity: int) -> None:
         """
