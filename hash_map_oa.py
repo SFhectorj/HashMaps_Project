@@ -94,6 +94,23 @@ class HashMap:
         if self.table_load() >= 0.5:    # need to implement table load
             self.resize_table(self._capacity * 2)
 
+        # initial index needs to be calculated
+        initial_index = self._hash_function(key) % self._capacity   # keeps the index within the hashtable
+        index_count = 1     # Counter for the quadratic sequence
+
+        # Search for an empty slot
+        while self._buckets[initial_index] is not None and not self._buckets[initial_index]. is_tombstone:
+            # Case 1: If the slot contains a key
+            if self._buckets[initial_index].key == key:
+                # Update with value & return
+                self._buckets[initial_index].value = value
+                return
+
+            # Case 2: If the slot contains a different key
+            # Use quadratic probing formula
+            initial_index = (initial_index + index_count * index_count) % self._capacity
+            index_count += 1
+
     def resize_table(self, new_capacity: int) -> None:
         """
         TODO: Write this implementation
