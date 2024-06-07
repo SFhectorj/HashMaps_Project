@@ -231,9 +231,9 @@ class HashMap:
 
     def remove(self, key: str) -> None:
         """
-        TODO: Write this implementation
+        Removes the given key and its associated value from the hash map.
+        If the key is not in the hash map, the method does nothing.
         """
-        pass
 
     def get_keys_and_values(self) -> DynamicArray:
         """
