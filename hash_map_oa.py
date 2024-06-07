@@ -284,10 +284,10 @@ class HashMap:
         """
         This method simply clears the hashmaps by removing its contents.
         """
-        # iterate the buckets
-        for i in range(self._buckets.length()):
-            # reset with an empty linked list
-            self._buckets[linked_list_index] = LinkedList()
+        # iterate the buckets of the hash table
+        for i in range(self._capacity):
+            # reset by setting to None
+            self._buckets[i] = None
 
         # reset size with 0
         self._size = 0
