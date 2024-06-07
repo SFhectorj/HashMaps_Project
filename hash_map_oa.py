@@ -186,17 +186,48 @@ class HashMap:
         while True:
             probed_index = (hash_index + index_count * index_count) % self._capacity
             active_entry = self._buckets[probed_index]
-        if key_exists:
-            return key_exists.value
-        else:
-            # Key doesn't exist, return none
-            return None
+
+            # Check if the key is not in the hash map
+            if active_entry is None:
+                return None
+
+            # The entry must not be a tombstone and match the provided key
+            if not active_entry.is_tombstone and active_entry.key == key:
+                # returns the value of the key
+                return active_entry.value
+
+            index_count += 1
+            # Once the limit is reached, return none
+            if index_count == self._capacity:
+                return None
 
     def contains_key(self, key: str) -> bool:
         """
-        TODO: Write this implementation
+        Parameters: Takes a string as a key.
+        This method checks if a given key exists in the hashmap.
         """
-        pass
+        # Set variables
+        hash_index = self._hash_function(key) % self._capacity  # hash function
+        index_count = 0
+
+        # Now implement quadratic probing
+        while True:
+            probed_index = (hash_index + index_count * index_count) % self._capacity
+            active_entry = self._buckets[probed_index]
+
+            # Check if the key is not in the hash map
+            if active_entry is None:
+                return None
+
+            # The entry must not be a tombstone and match the provided key
+            if not active_entry.is_tombstone and active_entry.key == key:
+                # returns the value of the key
+                return active_entry.value
+
+            index_count += 1
+            # Once the limit is reached, return none
+            if index_count == self._capacity:
+                return None
 
     def remove(self, key: str) -> None:
         """
