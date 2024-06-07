@@ -139,6 +139,14 @@ class HashMap:
         self._capacity = new_capacity
         self._size = 0  # Reset
 
+        # Proceed with rehashing using loop + put()
+        for j in range(old_buckets.length()):
+            active_entries = old_buckets[j]
+            # Checks the entries are not empty or have a tombstone
+            if active_entries is not None and not active_entries.is_tombstone:
+                # Place in the correct position
+                self.put(active_entries.key, active_entries.value)
+
 
 
     def table_load(self) -> float:
