@@ -116,6 +116,7 @@ class HashMap:
                 # reflects the new addition
                 self._size += 1
                 return
+            # Case 2: If the entry contains a tombston
             elif active_entry.is_tombstone:
                 if initial_tombstone is None:
                     initial_tombstone = current_index
