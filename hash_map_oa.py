@@ -217,17 +217,17 @@ class HashMap:
 
             # Check if the key is not in the hash map
             if active_entry is None:
-                return None
+                return False
 
             # The entry must not be a tombstone and match the provided key
             if not active_entry.is_tombstone and active_entry.key == key:
-                # returns the value of the key
-                return active_entry.value
+                # confirms match
+                return True
 
             index_count += 1
-            # Once the limit is reached, return none
+            # Once the limit is reached, return false
             if index_count == self._capacity:
-                return None
+                return False
 
     def remove(self, key: str) -> None:
         """
