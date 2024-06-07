@@ -180,10 +180,12 @@ class HashMap:
         """
         # Set variables
         hash_index = self._hash_function(key) % self._capacity  # hash function
-        linked_list_bucket = self._buckets[hash_index]  # sets the linked list at hash index
-        key_exists = linked_list_bucket.contains(key)  # check if the key already exists in the bucket using contain()
+        index_count = 0
 
-        # Key exists, update value
+        # Now implement quadratic probing
+        while True:
+            probed_index = (hash_index + index_count * index_count) % self._capacity
+            active_entry = self._buckets[probed_index]
         if key_exists:
             return key_exists.value
         else:
