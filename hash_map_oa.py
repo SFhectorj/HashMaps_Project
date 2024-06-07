@@ -103,29 +103,32 @@ class HashMap:
         index_count = 0     # Counter for the quadratic sequence
         initial_tombstone = None
 
-        # Search for an empty slot
         while True:
             current_index = (initial_index + index_count * index_count) % self._capacity
             active_entry = self._buckets[current_index]
 
+            # Case 1: The slot is set to None
             if active_entry is None:
+                # when a tombstone is already present
                 if initial_tombstone is not None:
+                    # Set the current index as the first tombstone
                     current_index = initial_tombstone
                 # Insert the new key/value pair
                 self._buckets[current_index] = HashEntry(key, value)    # new hash entry object
                 # reflects the new addition
                 self._size += 1
                 return
-            # Case 2: If the entry contains a tombston
+            # Case 2: If the slot contains a tombstone
             elif active_entry.is_tombstone:
                 if initial_tombstone is None:
                     initial_tombstone = current_index
-            # Case 1: If the slot contains a key
+            # Case 3: If the slot contains a key
             elif active_entry.key == key:
                 # Update with value & return
                 active_entry.value = value
                 return
 
+            # update the counter
             index_count += 1
 
     def resize_table(self, new_capacity: int) -> None:
