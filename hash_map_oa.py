@@ -127,7 +127,7 @@ class HashMap:
             #else:
                 # Case 2: If the slot contains a different key
                 # Use quadratic probing formula
-                initial_index = (initial_index + index_count * index_count) % self._capacity
+                # initial_index = (initial_index + index_count * index_count) % self._capacity
             index_count += 1
 
     def resize_table(self, new_capacity: int) -> None:
