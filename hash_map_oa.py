@@ -103,7 +103,14 @@ class HashMap:
         index_count = 1     # Counter for the quadratic sequence
 
         # Search for an empty slot
-        while self._buckets[initial_index] is not None and not self._buckets[initial_index].is_tombstone:
+        while True:
+            active_entry = self._buckets[initial_index]
+            if active_entry is None or active_entry.is_tombstone:
+                self._buckets[initial_index] = HashEntry(key, value)
+                self._size += 1
+                return
+            elif active_entry.key
+            self._buckets[initial_index] is not None and not self._buckets[initial_index].is_tombstone:
             # Case 1: If the slot contains a key
             if self._buckets[initial_index].key == key:
                 # Update with value & return
