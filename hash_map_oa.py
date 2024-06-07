@@ -116,12 +116,18 @@ class HashMap:
     def resize_table(self, new_capacity: int) -> None:
         """
         Parameter: Takes an integer as a new capacity
-        This method checks that the
+        This method changes the capacity of the table.
+        The implementation rehashes the active key/value pairs into the new table.
         """
+        # First check that new_capacity is not less than the current number of elements in the hash map
         if new_capacity < self._size:
+            # if so, the method does nothing.
             return
 
+        # If new_capacity is valid, make sure it is a prime number
         new_capacity = self._next_prime(new_capacity)
+
+
 
     def table_load(self) -> float:
         """
