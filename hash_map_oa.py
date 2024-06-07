@@ -294,15 +294,39 @@ class HashMap:
 
     def __iter__(self):
         """
-        TODO: Write this implementation
+        Enables the hash map to iterate itself by returning the implemented HashMap Iterator class.
         """
-        pass
+        return HashMapIterator(self)
+
+
+class HashMapIterator:
+    def __init__(self, hash_map):
+        # initializing the iterator
+        self._hash_map = hash_map
+        self._index = 0
+        self._count = 0
+
+    # Returns the instance itself
+    def __iter__(self):
+        return self
 
     def __next__(self):
         """
-        TODO: Write this implementation
+         Obtain next value and advance iterator
         """
-        pass
+        # iterate through the hashmap
+        while self._index < self._hash_map.get_capacity():
+            active_entry = self._hash_map._buckets[self._index]
+            self._index += 1
+
+            # The entry in the bucket must not be a tombstone and match the provided key
+            if active_entry is not None and not active_entry.is_tombstone:
+                self._count += 1
+
+                return active_entry
+
+        # The end of the hash map is reached
+        raise StopIteration
 
 
 # ------------------- BASIC TESTING ---------------------------------------- #
