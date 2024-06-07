@@ -106,26 +106,21 @@ class HashMap:
         while True:
             active_entry = self._buckets[initial_index]
             if active_entry is None or active_entry.is_tombstone:
-                self._buckets[initial_index] = HashEntry(key, value)
+                # Insert the new key/value pair
+                self._buckets[initial_index] = HashEntry(key, value)    # new hash entry object
+                # reflects the new addition
                 self._size += 1
                 return
-            elif active_entry.key
-            self._buckets[initial_index] is not None and not self._buckets[initial_index].is_tombstone:
             # Case 1: If the slot contains a key
-            if self._buckets[initial_index].key == key:
+            elif active_entry.key == key:
                 # Update with value & return
-                self._buckets[initial_index].value = value
+                active_entry.value = value
                 return
-
-            # Case 2: If the slot contains a different key
-            # Use quadratic probing formula
-            initial_index = (initial_index + index_count * index_count) % self._capacity
-            index_count += 1
-
-        # Insert the new key/value pair
-        self._buckets[initial_index] = HashEntry(key, value)    # new hash entry object
-        # reflects the new addition
-        self._size += 1
+            else:
+                # Case 2: If the slot contains a different key
+                # Use quadratic probing formula
+                initial_index = (initial_index + index_count * index_count) % self._capacity
+                index_count += 1
 
     def resize_table(self, new_capacity: int) -> None:
         """
