@@ -127,6 +127,18 @@ class HashMap:
         # If new_capacity is valid, make sure it is a prime number
         new_capacity = self._next_prime(new_capacity)
 
+        # Create the new array
+        new_buckets = DynamicArray()
+        for i in range(new_capacity):
+            # New buckets created and initialized to None
+            new_buckets.append(None)
+
+        # Rehash the key/value pairs
+        old_buckets = self._buckets
+        self._buckets = new_buckets
+        self._capacity = new_capacity
+        self._size = 0  # Reset
+
 
 
     def table_load(self) -> float:
