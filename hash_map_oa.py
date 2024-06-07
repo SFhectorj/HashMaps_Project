@@ -3,7 +3,9 @@
 # Course: CS261 - Data Structures
 # Assignment: 6
 # Due Date: 6/6/2024
-# Description:
+# Description: This assignment requires the implementation of a Hashmap class
+# that uses a dynamic array to store the hash table, and implements Open Addressing
+# with Quadratic Probing for collision resolution inside the dynamic array.
 
 from a6_include import (DynamicArray, DynamicArrayException, HashEntry,
                         hash_function_1, hash_function_2)
