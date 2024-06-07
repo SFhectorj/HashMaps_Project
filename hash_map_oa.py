@@ -160,9 +160,18 @@ class HashMap:
 
     def empty_buckets(self) -> int:
         """
-        TODO: Write this implementation
+        This method is used to obtain the number of empty buckets in the hash table.
         """
-        pass
+        keeping_count = 0
+        # Iterate over all buckets
+        for i in range(self._buckets.length()):
+            active_entries = self._buckets[i]
+            # An empty bucket is either `None` or a tombstone.
+            if active_entries is None or active_entries.is_tombstone:
+                # count it
+                keeping_count += 1
+
+        return keeping_count
 
     def get(self, key: str) -> object:
         """
