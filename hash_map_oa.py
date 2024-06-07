@@ -251,6 +251,7 @@ class HashMap:
             if not active_entry.is_tombstone and active_entry.key == key:
                 # Identify as a tombstone
                 active_entry.is_tombstone = True
+                # Factor out the tombstone
                 self._size -= 1
                 return
 
