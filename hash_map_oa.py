@@ -282,9 +282,15 @@ class HashMap:
 
     def clear(self) -> None:
         """
-        TODO: Write this implementation
+        This method simply clears the hashmaps by removing its contents.
         """
-        pass
+        # iterate the buckets
+        for i in range(self._buckets.length()):
+            # reset with an empty linked list
+            self._buckets[linked_list_index] = LinkedList()
+
+        # reset size with 0
+        self._size = 0
 
     def __iter__(self):
         """
