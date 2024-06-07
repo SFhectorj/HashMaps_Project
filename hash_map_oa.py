@@ -100,13 +100,13 @@ class HashMap:
 
         # initial index needs to be calculated
         initial_index = self._hash_function(key) % self._capacity   # keeps the index within the hashtable
-        index_count = 1     # Counter for the quadratic sequence
+        index_count = 0     # Counter for the quadratic sequence
         initial_tombstone = None
 
         # Search for an empty slot
         while True:
-            current_index = (initial_index + index_count + index_count) % self._capacity
-            active_entry = self._buckets[initial_index]
+            current_index = (initial_index + index_count * index_count) % self._capacity
+            active_entry = self._buckets[current_index]
 
             if active_entry is None:
                 if initial_tombstone is not None:
@@ -124,10 +124,7 @@ class HashMap:
                 # Update with value & return
                 active_entry.value = value
                 return
-            #else:
-                # Case 2: If the slot contains a different key
-                # Use quadratic probing formula
-                # initial_index = (initial_index + index_count * index_count) % self._capacity
+
             index_count += 1
 
     def resize_table(self, new_capacity: int) -> None:
