@@ -175,9 +175,20 @@ class HashMap:
 
     def get(self, key: str) -> object:
         """
-        TODO: Write this implementation
+        Parameter: Takes a string as a 'key'
+        This method will provide the associated value that comes with a key.
         """
-        pass
+        # Set variables
+        hash_index = self._hash_function(key) % self._capacity  # hash function
+        linked_list_bucket = self._buckets[hash_index]  # sets the linked list at hash index
+        key_exists = linked_list_bucket.contains(key)  # check if the key already exists in the bucket using contain()
+
+        # Key exists, update value
+        if key_exists:
+            return key_exists.value
+        else:
+            # Key doesn't exist, return none
+            return None
 
     def contains_key(self, key: str) -> bool:
         """
