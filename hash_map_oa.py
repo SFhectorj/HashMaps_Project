@@ -234,6 +234,30 @@ class HashMap:
         Removes the given key and its associated value from the hash map.
         If the key is not in the hash map, the method does nothing.
         """
+        # Set variables
+        hash_index = self._hash_function(key) % self._capacity  # hash function
+        index_count = 0
+
+        # Now implement quadratic probing
+        while True:
+            probed_index = (hash_index + index_count * index_count) % self._capacity
+            active_entry = self._buckets[probed_index]
+
+            # Check if the key is not in the hash map
+            if active_entry is None:
+                return None
+
+            # The entry must not be a tombstone and match the provided key
+            if not active_entry.is_tombstone and active_entry.key == key:
+                # Identify as a tombstone
+                active_entry.is_tombstone = True
+                self._size -= 1
+                return
+
+            index_count += 1
+            # Once the limit is reached, return none
+            if index_count == self._capacity:
+                return None
 
     def get_keys_and_values(self) -> DynamicArray:
         """
